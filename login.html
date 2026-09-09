@@ -1,154 +1,356 @@
 <!DOCTYPE html>
 <html lang="de">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Login - Feather Lifesteal</title>
+    <title>Login | Feather Lifesteal</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .auth-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 430px;
+        }
+
+        .auth-card {
+            background: rgba(15, 25, 21, 0.95);
+            border: 1px solid rgba(80, 255, 160, 0.15);
+            border-radius: 18px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        .auth-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .auth-logo h1 {
+            margin: 0;
+            font-size: 30px;
+            letter-spacing: 2px;
+        }
+
+        .auth-logo p {
+            margin-top: 8px;
+            opacity: 0.65;
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .form-group input:focus {
+            border-color: rgba(80, 255, 160, 0.6);
+        }
+
+        .login-button {
+            margin-top: 5px;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #39d98a;
+            color: #08120d;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .login-button:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
+
+        .login-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .message {
+            display: none;
+            padding: 12px 14px;
+            border-radius: 10px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .message.success {
+            display: block;
+            background: rgba(57, 217, 138, 0.12);
+            border: 1px solid rgba(57, 217, 138, 0.3);
+            color: #70e9aa;
+        }
+
+        .message.error {
+            display: block;
+            background: rgba(255, 80, 80, 0.12);
+            border: 1px solid rgba(255, 80, 80, 0.3);
+            color: #ff8b8b;
+        }
+
+        .auth-links {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 14px;
+            opacity: 0.75;
+        }
+
+        .auth-links a {
+            color: #39d98a;
+            text-decoration: none;
+        }
+
+        .auth-links a:hover {
+            text-decoration: underline;
+        }
+
+        .back-home {
+            display: block;
+            text-align: center;
+            margin-top: 18px;
+            color: white;
+            opacity: 0.55;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .back-home:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 500px) {
+            .auth-card {
+                padding: 28px 22px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- HEADER -->
+    <main class="auth-page">
 
-    <header class="site-header">
+        <div class="auth-container">
 
-        <div>
+            <div class="auth-card">
 
-            <a href="index.html" class="logo">
-                FEATHER <span>LIFESTEAL</span>
-            </a>
-
-            <a href="index.html" class="login-link">
-                ← Zurück zur Website
-            </a>
-
-        </div>
-
-    </header>
-
-
-    <!-- LOGIN -->
-
-    <main>
-
-        <section class="section">
-
-            <div class="login-container">
-
-                <div class="login-header">
-
-                    <span class="section-label">
-                        ACCOUNT
-                    </span>
-
-                    <h1>
-                        Willkommen zurück
-                    </h1>
-
-                    <p>
-                        Melde dich bei deinem Feather Lifesteal Account an.
-                    </p>
-
+                <div class="auth-logo">
+                    <h1>FEATHER LIFESTEAL</h1>
+                    <p>Bei deinem Account anmelden</p>
                 </div>
 
-
-                <form id="loginForm">
+                <form id="loginForm" class="auth-form">
 
                     <div class="form-group">
-
-                        <label for="username">
-                            Benutzername
-                        </label>
+                        <label for="login">Benutzername oder E-Mail</label>
 
                         <input
                             type="text"
-                            id="username"
-                            name="username"
-                            placeholder="Dein Benutzername"
-                            required
+                            id="login"
+                            name="login"
+                            placeholder="Tyme0711 oder deine E-Mail"
                             autocomplete="username"
+                            required
                         >
-
                     </div>
 
-
                     <div class="form-group">
-
-                        <label for="password">
-                            Passwort
-                        </label>
+                        <label for="password">Passwort</label>
 
                         <input
                             type="password"
                             id="password"
                             name="password"
                             placeholder="Dein Passwort"
-                            required
                             autocomplete="current-password"
+                            required
                         >
-
                     </div>
 
-
-                    <div
-                        id="loginMessage"
-                        class="form-message"
-                        aria-live="polite"
-                    ></div>
-
+                    <div id="loginMessage" class="message"></div>
 
                     <button
                         type="submit"
-                        class="button login-button"
+                        id="loginButton"
+                        class="login-button"
                     >
-                        Einloggen
+                        Anmelden
                     </button>
 
                 </form>
 
-
-                <div class="login-footer">
-
-                    <p>
-                        Noch keinen Account?
-                    </p>
-
-                    <a href="register.html">
-                        Jetzt registrieren
-                    </a>
-
+                <div class="auth-links">
+                    Noch keinen Account?
+                    <a href="register.html">Jetzt registrieren</a>
                 </div>
+
+                <a href="index.html" class="back-home">
+                    ← Zurück zur Startseite
+                </a>
 
             </div>
 
-        </section>
+        </div>
 
     </main>
 
-
     <script>
+        const API_URL =
+            "https://feather-lifesteal-api.tyme0711-yt.workers.dev";
 
         const loginForm = document.getElementById("loginForm");
+        const loginButton = document.getElementById("loginButton");
         const loginMessage = document.getElementById("loginMessage");
 
-        loginForm.addEventListener("submit", function(event) {
+        function showMessage(message, type) {
+            loginMessage.textContent = message;
+            loginMessage.className = "message " + type;
+        }
+
+        loginForm.addEventListener("submit", async function(event) {
 
             event.preventDefault();
 
-            loginMessage.textContent =
-                "Das Login-System wird noch mit der Datenbank verbunden.";
+            const login = document.getElementById("login").value.trim();
+            const password = document.getElementById("password").value;
 
-            loginMessage.className =
-                "form-message";
+            if (!login || !password) {
+                showMessage(
+                    "Bitte fülle alle Felder aus.",
+                    "error"
+                );
+                return;
+            }
+
+            loginButton.disabled = true;
+            loginButton.textContent = "Anmeldung läuft...";
+
+            loginMessage.className = "message";
+            loginMessage.textContent = "";
+
+            try {
+
+                const response = await fetch(
+                    `${API_URL}/api/login`,
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            login: login,
+                            password: password
+                        })
+                    }
+                );
+
+                let data;
+
+                try {
+                    data = await response.json();
+                } catch {
+                    throw new Error(
+                        "Der Server hat keine gültige Antwort zurückgegeben."
+                    );
+                }
+
+                if (!response.ok || !data.success) {
+
+                    showMessage(
+                        data.message ||
+                        "Anmeldung fehlgeschlagen.",
+                        "error"
+                    );
+
+                    return;
+                }
+
+                showMessage(
+                    "Erfolgreich angemeldet! Weiterleitung...",
+                    "success"
+                );
+
+                /*
+                 * Später können wir hier z.B. abhängig
+                 * von der Rolle weiterleiten:
+                 *
+                 * OWNER / ADMIN → admin/index.html
+                 * USER → account.html
+                 */
+
+                setTimeout(() => {
+
+                    if (
+                        data.user &&
+                        (
+                            data.user.role === "OWNER" ||
+                            data.user.role === "ADMIN"
+                        )
+                    ) {
+                        window.location.href = "admin/index.html";
+                    } else {
+                        window.location.href = "index.html";
+                    }
+
+                }, 1000);
+
+            } catch (error) {
+
+                console.error("Login error:", error);
+
+                showMessage(
+                    "Der Server konnte nicht erreicht werden.",
+                    "error"
+                );
+
+            } finally {
+
+                loginButton.disabled = false;
+                loginButton.textContent = "Anmelden";
+
+            }
 
         });
-
     </script>
 
 </body>
-
 </html>
