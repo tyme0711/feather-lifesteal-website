@@ -3,10 +3,508 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Locked</title></title>
+
+    <meta
+        name="description"
+        content="Feather Lifesteal – Dein Minecraft Lifesteal Server."
+    >
+
+    <title>Feather Lifesteal</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>Webside failed to load</h1>
-    <p>Webside is Locked</p>
+
+    <!-- ================================
+         HEADER / NAVIGATION
+    ================================= -->
+
+    <header class="site-header">
+
+        <a href="index.html" class="logo">
+            <span>FEATHER</span>
+            <strong>LIFESTEAL</strong>
+        </a>
+
+        <nav class="main-nav">
+            <a href="index.html" class="active">Home</a>
+            <a href="#server">Server</a>
+            <a href="#features">Features</a>
+            <a href="#community">Community</a>
+        </nav>
+
+        <div class="header-actions">
+            <a href="#" class="login-link">
+                Anmelden
+            </a>
+
+            <a href="#" class="button button-small">
+                Registrieren
+            </a>
+        </div>
+
+        <button
+            class="mobile-menu-button"
+            id="mobileMenuButton"
+            aria-label="Menü öffnen"
+        >
+            ☰
+        </button>
+
+    </header>
+
+
+    <!-- ================================
+         MOBILE NAVIGATION
+    ================================= -->
+
+    <div class="mobile-nav" id="mobileNav">
+
+        <a href="index.html">Home</a>
+        <a href="#server">Server</a>
+        <a href="#features">Features</a>
+        <a href="#community">Community</a>
+
+        <hr>
+
+        <a href="#" class="mobile-login">
+            Anmelden
+        </a>
+
+        <a href="#" class="button">
+            Registrieren
+        </a>
+
+    </div>
+
+
+    <main>
+
+        <!-- ================================
+             HERO
+        ================================= -->
+
+        <section class="hero">
+
+            <div class="hero-background"></div>
+
+            <div class="hero-content">
+
+                <div class="status-badge">
+                    <span class="status-dot"></span>
+                    SERVER ONLINE
+                </div>
+
+                <p class="hero-label">
+                    MINECRAFT LIFESTEAL SERVER
+                </p>
+
+                <h1>
+                    FEATHER
+                    <span>LIFESTEAL</span>
+                </h1>
+
+                <p class="hero-slogan">
+                    Kämpfe. Überlebe. Werde stärker.
+                </p>
+
+                <p class="hero-description">
+                    Erlebe einen modernen Minecraft-Lifesteal-Server
+                    mit PvP, Economy, Events und einer aktiven Community.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#server" class="button">
+                        Jetzt spielen
+                    </a>
+
+                    <a href="#community" class="button button-secondary">
+                        Discord
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             SERVER INFORMATION
+        ================================= -->
+
+        <section class="section server-section" id="server">
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    SERVER INFORMATION
+                </p>
+
+                <h2>
+                    Alles Wichtige auf einen Blick
+                </h2>
+
+                <p>
+                    Hier findest du die wichtigsten Informationen
+                    über den Feather Lifesteal Server.
+                </p>
+
+            </div>
+
+
+            <div class="server-grid">
+
+                <!-- STATUS -->
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        ●
+                    </div>
+
+                    <div>
+                        <span class="info-label">
+                            STATUS
+                        </span>
+
+                        <strong class="online-text">
+                            Online
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <!-- PLAYERS -->
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        👥
+                    </div>
+
+                    <div>
+                        <span class="info-label">
+                            SPIELER
+                        </span>
+
+                        <strong>
+                            -- / --
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <!-- VERSION -->
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        ◈
+                    </div>
+
+                    <div>
+                        <span class="info-label">
+                            VERSION
+                        </span>
+
+                        <strong>
+                            1.21.x
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <!-- SERVER IP -->
+
+                <div class="info-card server-ip-card">
+
+                    <div class="info-icon">
+                        ⚡
+                    </div>
+
+                    <div class="ip-content">
+
+                        <span class="info-label">
+                            SERVER-IP
+                        </span>
+
+                        <strong id="serverIp">
+                            play.example.de
+                        </strong>
+
+                        <button
+                            id="copyIpButton"
+                            class="copy-button"
+                        >
+                            IP kopieren
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <p
+                id="copyMessage"
+                class="copy-message"
+            ></p>
+
+        </section>
+
+
+        <!-- ================================
+             ABOUT
+        ================================= -->
+
+        <section class="section about-section">
+
+            <div class="about-content">
+
+                <div>
+
+                    <p class="section-label">
+                        ÜBER FEATHER
+                    </p>
+
+                    <h2>
+                        Was ist Feather Lifesteal?
+                    </h2>
+
+                </div>
+
+                <p>
+                    Feather Lifesteal ist ein Minecraft-Server,
+                    bei dem PvP, Fortschritt und Community
+                    zusammenkommen.
+                </p>
+
+                <p>
+                    Kämpfe gegen andere Spieler, sammle Ressourcen,
+                    verdiene Geld und werde immer stärker.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             FEATURES
+        ================================= -->
+
+        <section class="section features-section" id="features">
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    FEATURES
+                </p>
+
+                <h2>
+                    Das erwartet dich
+                </h2>
+
+            </div>
+
+
+            <div class="features-grid">
+
+                <!-- LIFESTEAL -->
+
+                <article class="feature-card">
+
+                    <div class="feature-icon">
+                        ⚔
+                    </div>
+
+                    <h3>
+                        Lifesteal
+                    </h3>
+
+                    <p>
+                        Kämpfe um Herzen und werde mit jedem
+                        gewonnenen Kampf stärker.
+                    </p>
+
+                </article>
+
+
+                <!-- ECONOMY -->
+
+                <article class="feature-card">
+
+                    <div class="feature-icon">
+                        ◆
+                    </div>
+
+                    <h3>
+                        Economy
+                    </h3>
+
+                    <p>
+                        Verdiene Geld, handle mit anderen Spielern
+                        und baue dir dein eigenes Vermögen auf.
+                    </p>
+
+                </article>
+
+
+                <!-- PVP -->
+
+                <article class="feature-card">
+
+                    <div class="feature-icon">
+                        🛡
+                    </div>
+
+                    <h3>
+                        PvP
+                    </h3>
+
+                    <p>
+                        Stelle dich anderen Spielern und
+                        beweise dein Können.
+                    </p>
+
+                </article>
+
+
+                <!-- EVENTS -->
+
+                <article class="feature-card">
+
+                    <div class="feature-icon">
+                        🏆
+                    </div>
+
+                    <h3>
+                        Events
+                    </h3>
+
+                    <p>
+                        Nimm an besonderen Events und
+                        Wettbewerben teil.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================
+             COMMUNITY
+        ================================= -->
+
+        <section
+            class="section community-section"
+            id="community"
+        >
+
+            <div class="community-box">
+
+                <p class="section-label">
+                    COMMUNITY
+                </p>
+
+                <h2>
+                    Werde Teil von Feather
+                </h2>
+
+                <p>
+                    Tausche dich mit anderen Spielern aus,
+                    erhalte Updates und verpasse keine Events.
+                </p>
+
+                <a
+                    href="#"
+                    class="button"
+                >
+                    Discord beitreten
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================================
+         FOOTER
+    ================================= -->
+
+    <footer class="site-footer">
+
+        <div class="footer-main">
+
+            <a href="index.html" class="logo">
+                <span>FEATHER</span>
+                <strong>LIFESTEAL</strong>
+            </a>
+
+            <p>
+                Kämpfe. Überlebe. Werde stärker.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="#">
+                Regeln
+            </a>
+
+            <a href="#">
+                Team
+            </a>
+
+            <a href="#">
+                Kontakt
+            </a>
+
+            <a href="#">
+                Datenschutz
+            </a>
+
+            <a href="#">
+                Impressum
+            </a>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Feather Lifesteal. Alle Rechte vorbehalten.
+            </p>
+
+            <p>
+                Minecraft ist eine Marke von Mojang Studios.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
 </body>
 </html>
