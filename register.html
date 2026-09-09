@@ -71,6 +71,11 @@
             margin-top: 8px;
         }
 
+        .login-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
         .form-message {
             display: none;
             margin: 15px 0;
@@ -334,7 +339,7 @@
 
 
                 // ========================================
-                // CHECK PASSWORD
+                // CHECK PASSWORDS
                 // ========================================
 
                 if (password !== passwordConfirm) {
@@ -361,7 +366,7 @@
                 try {
 
                     // ========================================
-                    // SEND REQUEST
+                    // SEND TO CLOUDFLARE WORKER
                     // ========================================
 
                     const response = await fetch(
@@ -408,12 +413,10 @@
 
                     showMessage(
                         data.message ||
-                        "Registrierung erfolgreich! Dein Account wartet auf die Freigabe.",
+                        "Registrierung erfolgreich! Dein Account wartet auf die Freigabe durch einen Administrator.",
                         "success"
                     );
 
-
-                    // Formular leeren
 
                     registerForm.reset();
 
@@ -438,6 +441,7 @@
 
                     registerButton.textContent =
                         "Account erstellen";
+
                 }
 
             }
@@ -448,3 +452,4 @@
 </body>
 
 </html>
+
