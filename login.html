@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - Feather Lifesteal</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header class="site-header">
+
+        <div>
+
+            <a href="index.html" class="logo">
+                FEATHER <span>LIFESTEAL</span>
+            </a>
+
+            <a href="index.html" class="login-link">
+                ← Zurück zur Website
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- LOGIN -->
+
+    <main>
+
+        <section class="section">
+
+            <div class="login-container">
+
+                <div class="login-header">
+
+                    <span class="section-label">
+                        ACCOUNT
+                    </span>
+
+                    <h1>
+                        Willkommen zurück
+                    </h1>
+
+                    <p>
+                        Melde dich bei deinem Feather Lifesteal Account an.
+                    </p>
+
+                </div>
+
+
+                <form id="loginForm">
+
+                    <div class="form-group">
+
+                        <label for="username">
+                            Benutzername
+                        </label>
+
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="Dein Benutzername"
+                            required
+                            autocomplete="username"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Passwort
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Dein Passwort"
+                            required
+                            autocomplete="current-password"
+                        >
+
+                    </div>
+
+
+                    <div
+                        id="loginMessage"
+                        class="form-message"
+                        aria-live="polite"
+                    ></div>
+
+
+                    <button
+                        type="submit"
+                        class="button login-button"
+                    >
+                        Einloggen
+                    </button>
+
+                </form>
+
+
+                <div class="login-footer">
+
+                    <p>
+                        Noch keinen Account?
+                    </p>
+
+                    <a href="register.html">
+                        Jetzt registrieren
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        const loginForm = document.getElementById("loginForm");
+        const loginMessage = document.getElementById("loginMessage");
+
+        loginForm.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            loginMessage.textContent =
+                "Das Login-System wird noch mit der Datenbank verbunden.";
+
+            loginMessage.className =
+                "form-message";
+
+        });
+
+    </script>
+
+</body>
+
+</html>
