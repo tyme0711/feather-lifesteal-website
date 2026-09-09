@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Feather Lifesteal - Admin Panel</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080b10;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 240px;
+            background: #0d1219;
+            border-right: 1px solid #1d2732;
+            padding: 25px 15px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 900;
+            padding: 0 12px 30px;
+        }
+
+        .logo span {
+            color: #55d66b;
+        }
+
+        .nav-title {
+            color: #66717d;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 20px 12px 8px;
+        }
+
+        .nav-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 5px;
+
+            border: 0;
+            border-radius: 8px;
+
+            background: transparent;
+            color: #9aa6b2;
+
+            text-align: left;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .nav-button:hover,
+        .nav-button.active {
+            background: #17212c;
+            color: #55d66b;
+        }
+
+        .main {
+            margin-left: 240px;
+            padding: 35px;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        .topbar h1 {
+            font-size: 30px;
+        }
+
+        .admin-user {
+            padding: 10px 15px;
+            border: 1px solid #1d2732;
+            border-radius: 9px;
+            background: #111821;
+            color: #9aa6b2;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .card {
+            background: #111821;
+            border: 1px solid #1d2732;
+            border-radius: 12px;
+            padding: 22px;
+        }
+
+        .card-title {
+            color: #9aa6b2;
+            font-size: 13px;
+        }
+
+        .card-value {
+            display: block;
+            margin-top: 10px;
+            font-size: 30px;
+            font-weight: 900;
+        }
+
+        .green {
+            color: #55d66b;
+        }
+
+        .section {
+            margin-top: 30px;
+        }
+
+        .section h2 {
+            margin-bottom: 15px;
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .action {
+            padding: 20px;
+            background: #111821;
+            border: 1px solid #1d2732;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        .action:hover {
+            background: #17212c;
+        }
+
+        .action h3 {
+            margin-bottom: 7px;
+        }
+
+        .action p {
+            color: #9aa6b2;
+            font-size: 13px;
+        }
+
+        @media (max-width: 900px) {
+            .sidebar {
+                width: 190px;
+            }
+
+            .main {
+                margin-left: 190px;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .sidebar {
+                position: static;
+                width: 100%;
+            }
+
+            .main {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .topbar {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            FEATHER <span>LIFESTEAL</span>
+        </div>
+
+        <div class="nav-title">Übersicht</div>
+
+        <button class="nav-button active">
+            🏠 Dashboard
+        </button>
+
+        <div class="nav-title">Website</div>
+
+        <button class="nav-button">
+            📄 Seiten
+        </button>
+
+        <button class="nav-button">
+            📰 News
+        </button>
+
+        <button class="nav-button">
+            📅 Events
+        </button>
+
+        <button class="nav-button">
+            👥 Team
+        </button>
+
+        <div class="nav-title">Benutzer</div>
+
+        <button class="nav-button">
+            👤 Benutzer
+        </button>
+
+        <button class="nav-button">
+            📝 Bewerbungen
+        </button>
+
+        <button class="nav-button">
+            🐛 Bugs
+        </button>
+
+        <div class="nav-title">System</div>
+
+        <button class="nav-button">
+            ⚙️ Einstellungen
+        </button>
+
+    </aside>
+
+
+    <main class="main">
+
+        <div class="topbar">
+
+            <div>
+                <h1>Dashboard</h1>
+                <p style="color:#9aa6b2;">
+                    Willkommen im Feather Lifesteal Admin Panel.
+                </p>
+            </div>
+
+            <div class="admin-user">
+                👑 Administrator
+            </div>
+
+        </div>
+
+
+        <div class="dashboard-grid">
+
+            <div class="card">
+                <span class="card-title">Benutzer</span>
+                <span class="card-value">0</span>
+            </div>
+
+            <div class="card">
+                <span class="card-title">Offene Bewerbungen</span>
+                <span class="card-value">0</span>
+            </div>
+
+            <div class="card">
+                <span class="card-title">Bug Reports</span>
+                <span class="card-value">0</span>
+            </div>
+
+            <div class="card">
+                <span class="card-title">Server Status</span>
+                <span class="card-value green">ONLINE</span>
+            </div>
+
+        </div>
+
+
+        <div class="section">
+
+            <h2>Schnellzugriff</h2>
+
+            <div class="quick-actions">
+
+                <div class="action">
+                    <h3>📄 Neue Seite</h3>
+                    <p>
+                        Erstelle eine neue Website-Seite.
+                    </p>
+                </div>
+
+                <div class="action">
+                    <h3>📰 News erstellen</h3>
+                    <p>
+                        Veröffentliche eine neue Server-News.
+                    </p>
+                </div>
+
+                <div class="action">
+                    <h3>👤 Benutzer verwalten</h3>
+                    <p>
+                        Benutzer anzeigen und verwalten.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
