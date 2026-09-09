@@ -14,7 +14,6 @@
             width: min(100%, 460px);
             margin: 40px auto;
             padding: 35px;
-
             background: #111821;
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 16px;
@@ -41,7 +40,6 @@
         .form-group label {
             display: block;
             margin-bottom: 7px;
-
             font-size: 13px;
             font-weight: 700;
         }
@@ -49,17 +47,12 @@
         .form-group input {
             width: 100%;
             height: 46px;
-
             padding: 0 14px;
-
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 9px;
-
             outline: none;
-
             background: #0d1219;
             color: white;
-
             font-size: 14px;
         }
 
@@ -69,7 +62,6 @@
 
         .form-hint {
             margin-top: 6px;
-
             color: #66717d;
             font-size: 12px;
         }
@@ -81,17 +73,9 @@
 
         .form-message {
             display: none;
-
             margin: 15px 0;
             padding: 12px;
-
             border-radius: 9px;
-
-            background: rgba(85, 214, 107, 0.08);
-            border: 1px solid rgba(85, 214, 107, 0.2);
-
-            color: #55d66b;
-
             font-size: 13px;
         }
 
@@ -99,11 +83,21 @@
             display: block;
         }
 
+        .form-message.success {
+            background: rgba(85, 214, 107, 0.08);
+            border: 1px solid rgba(85, 214, 107, 0.2);
+            color: #55d66b;
+        }
+
+        .form-message.error {
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+
         .login-footer {
             margin-top: 25px;
-
             text-align: center;
-
             color: #9aa6b2;
             font-size: 13px;
         }
@@ -111,7 +105,6 @@
         .login-footer a {
             display: inline-block;
             margin-top: 7px;
-
             color: #55d66b;
             font-weight: 700;
         }
@@ -256,6 +249,7 @@
                     <button
                         type="submit"
                         class="button login-button"
+                        id="registerButton"
                     >
                         Account erstellen
                     </button>
@@ -284,41 +278,170 @@
 
     <script>
 
+        // ========================================
+        // FEATHER LIFESTEAL REGISTER
+        // ========================================
+
+        const API_URL =
+            "https://feather-lifesteal-api.tyme0711-yt.workers.dev";
+
+
         const registerForm =
             document.getElementById("registerForm");
 
         const registerMessage =
             document.getElementById("registerMessage");
 
-
-        registerForm.addEventListener("submit", function(event) {
-
-            event.preventDefault();
-
-            const password =
-                document.getElementById("password").value;
-
-            const passwordConfirm =
-                document.getElementById("passwordConfirm").value;
+        const registerButton =
+            document.getElementById("registerButton");
 
 
-            if (password !== passwordConfirm) {
+        // ========================================
+        // SHOW MESSAGE
+        // ========================================
 
-                registerMessage.textContent =
-                    "Die Passwörter stimmen nicht überein.";
+        function showMessage(message, type) {
 
-                registerMessage.classList.add("show");
+            registerMessage.textContent = message;
 
-                return;
+            registerMessage.className =
+                "form-message show " + type;
+        }
+
+
+        // ========================================
+        // REGISTER
+        // ========================================
+
+        registerForm.addEventListener(
+            "submit",
+            async function(event) {
+
+                event.preventDefault();
+
+
+                const username =
+                    document.getElementById("username").value.trim();
+
+                const email =
+                    document.getElementById("email").value.trim();
+
+                const password =
+                    document.getElementById("password").value;
+
+                const passwordConfirm =
+                    document.getElementById("passwordConfirm").value;
+
+
+                // ========================================
+                // CHECK PASSWORD
+                // ========================================
+
+                if (password !== passwordConfirm) {
+
+                    showMessage(
+                        "Die Passwörter stimmen nicht überein.",
+                        "error"
+                    );
+
+                    return;
+                }
+
+
+                // ========================================
+                // DISABLE BUTTON
+                // ========================================
+
+                registerButton.disabled = true;
+
+                registerButton.textContent =
+                    "Registrierung läuft...";
+
+
+                try {
+
+                    // ========================================
+                    // SEND REQUEST
+                    // ========================================
+
+                    const response = await fetch(
+                        API_URL + "/api/register",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                username: username,
+                                email: email,
+                                password: password
+                            })
+                        }
+                    );
+
+
+                    const data =
+                        await response.json();
+
+
+                    // ========================================
+                    // ERROR
+                    // ========================================
+
+                    if (!response.ok || !data.success) {
+
+                        showMessage(
+                            data.error ||
+                            "Registrierung fehlgeschlagen.",
+                            "error"
+                        );
+
+                        return;
+                    }
+
+
+                    // ========================================
+                    // SUCCESS
+                    // ========================================
+
+                    showMessage(
+                        data.message ||
+                        "Registrierung erfolgreich! Dein Account wartet auf die Freigabe.",
+                        "success"
+                    );
+
+
+                    // Formular leeren
+
+                    registerForm.reset();
+
+
+                } catch (error) {
+
+                    console.error(
+                        "Registration error:",
+                        error
+                    );
+
+
+                    showMessage(
+                        "Die Verbindung zum Server ist fehlgeschlagen.",
+                        "error"
+                    );
+
+
+                } finally {
+
+                    registerButton.disabled = false;
+
+                    registerButton.textContent =
+                        "Account erstellen";
+                }
+
             }
-
-
-            registerMessage.textContent =
-                "Registrierung wird noch mit der Datenbank verbunden.";
-
-            registerMessage.classList.add("show");
-
-        });
+        );
 
     </script>
 
